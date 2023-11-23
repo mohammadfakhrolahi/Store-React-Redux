@@ -9,8 +9,8 @@ const App = () => {
   return (
     <div className='main-container'>
       <Header />
-      <Container>
-        <main className="py-3">
+      <Container className='mt-5'>
+        <main className="py-5">
           <h2>FC Market</h2>
           <Home />
         </main>

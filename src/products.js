@@ -41,34 +41,6 @@ const products = [
     description: 'Description',
     price: 1299,
   },
-  {
-    _id: 6,
-    name: 'MacBook Air',
-    image: '/images/macbookair.jpg',
-    description: 'Description',
-    price: 1299,
-  },
-  {
-    _id: 6,
-    name: 'MacBook Air',
-    image: '/images/macbookair.jpg',
-    description: 'Description',
-    price: 1299,
-  },
-  {
-    _id: 6,
-    name: 'MacBook Air',
-    image: '/images/macbookair.jpg',
-    description: 'Description',
-    price: 1299,
-  },
-  {
-    _id: 6,
-    name: 'MacBook Air',
-    image: '/images/macbookair.jpg',
-    description: 'Description',
-    price: 1299,
-  },
 ]
 
 export default products;
