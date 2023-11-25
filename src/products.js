@@ -1,8 +1,8 @@
 const products = [
   {
     _id: 1,
-    name: 'AirPods',
-    image: '/images/airpods.jpg',
+    name: 'iMac',
+    image: '/images/imac.jpg',
     description: 'Description',
     price: 99,
   },
@@ -22,8 +22,8 @@ const products = [
   },
   {
     _id: 4,
-    name: 'Mac',
-    image: '/images/mac.jpg',
+    name: 'Mac mini',
+    image: '/images/macmini.jpg',
     description: 'Description',
     price: 1299,
   },
