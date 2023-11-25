@@ -6,7 +6,7 @@ const Header = () => {
     <header>
       <Navbar className="bg-dark fixed-top" variant="dark">
         <Container>
-          <Navbar.Brand href="/">FC Market</Navbar.Brand>
+          <Navbar.Brand href="/"  className='logo'>FC Market</Navbar.Brand>
           <Nav>
             <Nav.Link href="/cart">
               <i className="bi bi-bag-fill fs-5 "></i>

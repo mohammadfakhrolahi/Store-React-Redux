@@ -9,7 +9,7 @@ const Footer = () => {
           <Col xs={12} md={4}>
             <a
               href="/"
-              className="text-decoration-none text-black fs-3 fw-semibold"
+              className="text-decoration-none text-black fs-3 fw-semibold logo"
             >
               FC Market
             </a>
