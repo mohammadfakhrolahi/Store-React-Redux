@@ -6,15 +6,14 @@ const Product = ({ product }) => {
   return (
     <Card className="h-100">
       <Link to={`/product/${product._id}`}>
-        <a>
-          <Card.Img src={product.image} />
-        </a>
+        <Card.Img src={product.image} />
       </Link>
       <Card.Body>
-        <Link to={`/product/${product._id}`}>
-          <a className="text-black link-underline link-underline-opacity-0">
-            <Card.Title>{product.name}</Card.Title>
-          </a>
+        <Link
+          to={`/product/${product._id}`}
+          className="text-black link-underline link-underline-opacity-0"
+        >
+          <Card.Title>{product.name}</Card.Title>
         </Link>
         <Card.Text>{product.description}</Card.Text>
         <Card.Text>${product.price}</Card.Text>
