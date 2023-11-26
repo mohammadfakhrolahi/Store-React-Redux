@@ -15,7 +15,7 @@ const Product = ({ product }) => {
         >
           <Card.Title>{product.name}</Card.Title>
         </Link>
-        <Card.Text>{product.description}</Card.Text>
+        <Card.Text>{product.info}</Card.Text>
         <Card.Text>${product.price}</Card.Text>
       </Card.Body>
       <Card.Footer className="bg-transparent border-0">

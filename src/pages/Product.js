@@ -35,7 +35,7 @@ const Product = () => {
         <Col xs={12} md={6} className="text-white">
           <h2 className="text-dark">{product.name}</h2>
           <p className="h4 text-body">${product.price}</p>
-          <p className="text-body-secondary">{product.description}</p>
+          <p className="text-body-secondary">{product.info}</p>
 
           <div className="d-flex align-items-center">
             <div
