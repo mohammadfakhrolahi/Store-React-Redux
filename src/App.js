@@ -1,22 +1,26 @@
 import React from 'react'
-
+import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
+
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import Home from './pages/Home/Home'
+import Product from './pages/Product'
 
 const App = () => {
   return (
-    <div className='main-container'>
+    <Router className="main-container">
       <Header />
-      <Container className='mt-5'>
+      <Container className="mt-5">
         <main className="py-5">
-          <h2>FC Market</h2>
-          <Home />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path='/product/:id' element={<Product/>} />
+          </Routes>
         </main>
       </Container>
       <Footer />
-    </div>
+    </Router>
   )
 }
 
