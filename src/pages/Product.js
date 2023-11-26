@@ -43,13 +43,13 @@ const Product = () => {
               role="group"
               aria-label="First group"
             >
-              <Button onClick={handleDecrement} className="btn-secondary">
+              <Button onClick={handleDecrement} className="btn-primary">
                 <i className="bi bi-dash"></i>
               </Button>
-              <p className="px-3 m-0 text-light bg-secondary d-flex align-items-center">
+              <p className="px-3 m-0 text-dark bg-primary-subtle border d-flex align-items-center">
                 {counter}
               </p>
-              <Button onClick={handleIncrement} className="btn-secondary">
+              <Button onClick={handleIncrement} className="btn-primary">
                 <i className="bi bi-plus-lg"></i>
               </Button>
             </div>
