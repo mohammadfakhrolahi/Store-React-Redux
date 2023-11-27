@@ -28,7 +28,7 @@ const Product = () => {
 
   return (
     <Container className="">
-      <Link to="/" className='btn btn-outline-secondary btn-sm'>Back</Link>
+      <Link to="/" className='btn btn-outline-secondary btn-sm'><i class="bi bi-chevron-left"></i> Back</Link>
       <Row className='mt-3'>
         <Col xs={12} md={6}>
           <Image src={product.image} alt={product.name} className="img-fluid" />
