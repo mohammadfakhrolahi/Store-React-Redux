@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Container, Row, Col, Image, Button } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 
@@ -26,8 +27,9 @@ const Product = () => {
   }
 
   return (
-    <Container className="my-5">
-      <Row>
+    <Container className="">
+      <Link to="/" className='btn btn-outline-secondary btn-sm'>Back</Link>
+      <Row className='mt-3'>
         <Col xs={12} md={6}>
           <Image src={product.image} alt={product.name} className="img-fluid" />
         </Col>
