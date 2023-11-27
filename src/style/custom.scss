@@ -1,0 +1,18 @@
+$utilities: ();
+
+$utilities: map-merge(
+  (
+    'min-viewport-height': (
+      property: min-height,
+      class: min-vh,
+      values: (
+        100: 100vh,
+        50: 50vh,
+        60: 60vh,
+      ),
+    ),
+  ),
+  $utilities
+);
+
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';

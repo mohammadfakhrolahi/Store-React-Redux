@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Card } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 
 const Product = ({ product }) => {
   return (
@@ -19,9 +19,9 @@ const Product = ({ product }) => {
         <Card.Text>${product.price}</Card.Text>
       </Card.Body>
       <Card.Footer className="bg-transparent border-0">
-        <a href="#" className="btn btn-primary bg-black border-0">
+        <Button href="#" className="btn btn-primary bg-black border-0" variant='dark'>
           Add to cart
-        </a>
+        </Button>
       </Card.Footer>
     </Card>
   )
