@@ -1,12 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {  Row, Col } from 'react-bootstrap'
+import axios from 'axios'
 
-import products from '../../products'
 import Product from '../../components/Product/Product'
 
 import './Home.css'
 
 const Home = () => {
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    const sendRequest = (async () => {
+      const response = await axios.get('http://localhost:8000/api/products')
+
+      setProducts(response.data)
+    })
+
+    sendRequest()
+  }, [])
+
   return (
     <div>
       <Row className='row-gap-4 '>
