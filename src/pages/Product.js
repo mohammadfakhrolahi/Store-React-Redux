@@ -1,77 +1,86 @@
-// import React, { useState } from 'react'
-// import { Link } from 'react-router-dom'
-// import { Container, Row, Col, Image, Button } from 'react-bootstrap'
-// import { useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import { Container, Row, Col, Image, Button } from 'react-bootstrap'
+import axios from 'axios'
 
-// import products from '../products'
+const Product = () => {
+  const [products, setProducts] = useState([])
+  const [counter, setCounter] = useState(1)
 
-// const Product = () => {
-//   const [counter, setCounter] = useState(1)
+  const handleIncrement = () => {
+    setCounter(counter + 1)
+  }
 
-//   const handleIncrement = () => {
-//     setCounter(counter + 1)
-//   }
+  const handleDecrement = () => {
+    if (counter > 1) {
+      setCounter(counter - 1)
+    }
+  }
 
-//   const handleDecrement = () => {
-//     if (counter > 1) {
-//       setCounter(counter - 1)
-//     }
-//   }
+  useEffect(() => {
+    const sendRequest = (async () =>  {
+      const response = await axios.get('http://localhost:8000/api/products')
 
-//   const { id } = useParams()
-//   const product = products.find((item) => String(item._id) === id)
+      setProducts(response.data)
+    })
 
-//   // Check if product is undefined
-//   if (!product) {
-//     return <h2>Product not found!</h2>
-//   }
+    sendRequest()
+  }, [])
 
-//   return (
-//     <Container className="">
-//       <Link to="/" className='btn btn-outline-secondary btn-sm'><i class="bi bi-chevron-left"></i> Back</Link>
-//       <Row className='mt-3'>
-//         <Col xs={12} md={6}>
-//           <Image src={product.image} alt={product.name} className="img-fluid" />
-//         </Col>
+  const { id } = useParams()
+  const product = products.find((item) => String(item._id) === id)
 
-//         <Col xs={12} md={6} className="text-white">
-//           <h2 className="text-dark">{product.name}</h2>
-//           <p className="h4 text-body">${product.price}</p>
-//           <p className="text-body-secondary">{product.info}</p>
+  // Check if product is undefined
+  if (!product) {
+    return <h2>Product not found!</h2>
+  }
 
-//           <div className="d-flex align-items-center">
-//             <div
-//               className="btn-group me-2"
-//               role="group"
-//               aria-label="First group"
-//             >
-//               <Button onClick={handleDecrement} className="btn-primary">
-//                 <i className="bi bi-dash"></i>
-//               </Button>
-//               <p className="px-3 m-0 text-dark bg-primary-subtle border d-flex align-items-center">
-//                 {counter}
-//               </p>
-//               <Button onClick={handleIncrement} className="btn-primary">
-//                 <i className="bi bi-plus-lg"></i>
-//               </Button>
-//             </div>
-//             <Button className="ml-3 btn-dark">
-//               <i className="bi bi-cart-plus-fill"></i> Add to Cart
-//             </Button>
-//           </div>
-//         </Col>
-//       </Row>
+  return (
+    <Container className="">
+      <Link to="/" className='btn btn-outline-secondary btn-sm'><i className="bi bi-chevron-left"></i> Back</Link>
+      <Row className='mt-3'>
+        <Col xs={12} md={6}>
+          <Image src={product.image} alt={product.name} className="img-fluid" />
+        </Col>
 
-//       <Row className="mt-5">
-//         <Col>
-//           <div className="bg-light p-4 text-dark rounded-4">
-//             <h3>Description</h3>
-//             <p>{product.description}</p>
-//           </div>
-//         </Col>
-//       </Row>
-//     </Container>
-//   )
-// }
+        <Col xs={12} md={6} className="text-white">
+          <h2 className="text-dark">{product.name}</h2>
+          <p className="h4 text-body">${product.price}</p>
+          <p className="text-body-secondary">{product.info}</p>
 
-// export default Product
+          <div className="d-flex align-items-center">
+            <div
+              className="btn-group me-2"
+              role="group"
+              aria-label="First group"
+            >
+              <Button onClick={handleDecrement} className="btn-primary">
+                <i className="bi bi-dash"></i>
+              </Button>
+              <p className="px-3 m-0 text-dark bg-primary-subtle border d-flex align-items-center">
+                {counter}
+              </p>
+              <Button onClick={handleIncrement} className="btn-primary">
+                <i className="bi bi-plus-lg"></i>
+              </Button>
+            </div>
+            <Button className="ml-3 btn-dark">
+              <i className="bi bi-cart-plus-fill"></i> Add to Cart
+            </Button>
+          </div>
+        </Col>
+      </Row>
+
+      <Row className="mt-5">
+        <Col>
+          <div className="bg-light p-4 text-dark rounded-4">
+            <h3>Description</h3>
+            <p>{product.description}</p>
+          </div>
+        </Col>
+      </Row>
+    </Container>
+  )
+}
+
+export default Product

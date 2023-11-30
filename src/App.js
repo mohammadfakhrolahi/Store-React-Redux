@@ -16,7 +16,7 @@ const App = () => {
         <main className="py-5">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path='/product/:id' element={<Product/>} />
+            <Route path="/product/:id" element={<Product />} />
             <Route path='*' element={<NotFound/>}/>
           </Routes>
         </main>
