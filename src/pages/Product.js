@@ -4,7 +4,7 @@ import { Container, Row, Col, Image, Button } from 'react-bootstrap'
 import axios from 'axios'
 
 const Product = () => {
-  const [products, setProducts] = useState([])
+  const [product, setProduct] = useState({})
   const [counter, setCounter] = useState(1)
 
   const handleIncrement = () => {
@@ -17,18 +17,18 @@ const Product = () => {
     }
   }
 
+  const { id } = useParams()
+
   useEffect(() => {
     const sendRequest = (async () =>  {
-      const response = await axios.get('http://localhost:8000/api/products')
+      const response = await axios.get(`http://localhost:8000/api/products/${id}`)
 
-      setProducts(response.data)
+      setProduct(response.data)
     })
 
     sendRequest()
-  }, [])
+  }, [id])
 
-  const { id } = useParams()
-  const product = products.find((item) => String(item._id) === id)
 
   // Check if product is undefined
   if (!product) {
