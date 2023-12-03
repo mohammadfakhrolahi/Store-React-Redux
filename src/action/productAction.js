@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const productListAction = async (dispatch) => {
+export const productListAction = () => async (dispatch) => {
   try {
     dispatch({ type: 'PRODUCT_LIST-REQUEST' })
 
