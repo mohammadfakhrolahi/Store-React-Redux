@@ -21,7 +21,11 @@ const Home = () => {
     <div>
       <h1>Products</h1>
       {loading ? (
-        <h2>Loading...</h2>
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
       ) : (
         <Row className="row-gap-4 ">
           {products.map((item) => {
