@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Container, Row, Col, Image, Button } from 'react-bootstrap'
+import { Container, Row, Col, Image, Button, Toast } from 'react-bootstrap'
 
 import { productDetailAction } from '../action/productAction'
 import Loading from '../components/Loading/Loading'
@@ -30,6 +30,13 @@ const Product = () => {
     dispatch(productDetailAction(id))
   }, [dispatch])
 
+  const navigate = useNavigate()
+
+  const addToCartHandler = () => {
+    navigate(`/cart/${id}`)
+    console.log('first')
+  }
+
   // Check if product is undefined
   if (!product) {
     return <h2>Product not found!</h2>
@@ -38,7 +45,7 @@ const Product = () => {
   return (
     <Container className="">
       {loading ? (
-        <Loading/>
+        <Loading />
       ) : (
         <div>
           <Link to="/" className="btn btn-outline-secondary btn-sm">
@@ -74,7 +81,7 @@ const Product = () => {
                     <i className="bi bi-plus-lg"></i>
                   </Button>
                 </div>
-                <Button className="ml-3 btn-dark">
+                <Button onClick={addToCartHandler} className="ml-3 btn-dark">
                   <i className="bi bi-cart-plus-fill"></i> Add to Cart
                 </Button>
               </div>

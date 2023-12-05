@@ -1,10 +1,11 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import Home from './pages/Home/Home'
+import Cart from './pages/Cart/Cart'
 import Product from './pages/Product'
 import NotFound from './pages/NotFound'
 
@@ -16,8 +17,9 @@ const App = () => {
         <main className="py-5">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/cart/:id?" element={<Cart />} />
             <Route path="/product/:id" element={<Product />} />
-            <Route path='*' element={<NotFound/>}/>
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
       </Container>
