@@ -1,3 +1,4 @@
+// Product list
 export const productListReducer = (state = { products: [] }, action) => {
   switch (action.type) {
     case 'PRODUCT_LIST-REQUEST':
@@ -7,4 +8,15 @@ export const productListReducer = (state = { products: [] }, action) => {
     default:
       return state
   }
+}
+
+// Product detail
+export const productDetailReducer = (state = { product: {} }, action) => {
+  switch (action.type) {
+    case 'PRODUCT_DETAIL-REQUEST':
+      return { loading: true, product: { ...state } }
+    case 'PRODUCT_DETAIL-SUCCESS':
+      return { loading: false, product: action.payload }
+  }
+  return state
 }

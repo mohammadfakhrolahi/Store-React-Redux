@@ -10,7 +10,8 @@ import './Home.css'
 const Home = () => {
   const dispatch = useDispatch()
 
-  const productList = useSelector((state) => state.productList)
+  //? useSelector(): extract state from redux.
+  const productList = useSelector((state) => state.productList) //? access to which part of the state.
   const { loading, products } = productList
 
   useEffect(() => {
