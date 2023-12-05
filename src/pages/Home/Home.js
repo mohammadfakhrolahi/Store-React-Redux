@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import Product from '../../components/Product/Product'
 import { productListAction } from '../../action/productAction'
+import Loading from '../../components/Loading/Loading'
 
 import './Home.css'
 
@@ -22,11 +23,7 @@ const Home = () => {
     <div>
       <h1>Products</h1>
       {loading ? (
-        <div className="d-flex justify-content-center">
-          <div className="spinner-border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
-        </div>
+        <Loading />
       ) : (
         <Row className="row-gap-4 ">
           {products.map((item) => {

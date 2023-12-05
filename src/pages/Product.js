@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Container, Row, Col, Image, Button } from 'react-bootstrap'
 
 import { productDetailAction } from '../action/productAction'
+import Loading from '../components/Loading/Loading'
 
 const Product = () => {
   const dispatch = useDispatch()
@@ -37,11 +38,7 @@ const Product = () => {
   return (
     <Container className="">
       {loading ? (
-        <div className="d-flex justify-content-center">
-          <div className="spinner-border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
-        </div>
+        <Loading/>
       ) : (
         <div>
           <Link to="/" className="btn btn-outline-secondary btn-sm">
