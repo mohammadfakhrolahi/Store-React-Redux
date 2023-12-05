@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Container, Row, Col, Image, Button, Toast } from 'react-bootstrap'
+import { Container, Row, Col, Image, Button } from 'react-bootstrap'
 
 import { productDetailAction } from '../action/productAction'
 import Loading from '../components/Loading/Loading'
+import Toast from '../components/Toast/Toast'
 
 const Product = () => {
   const dispatch = useDispatch()
@@ -12,6 +13,7 @@ const Product = () => {
   const productDetail = useSelector((state) => state.productDetail)
   const { loading, product } = productDetail
 
+  const [showToast, setShowToast] = useState(false)
   const [counter, setCounter] = useState(1)
 
   const handleIncrement = () => {
@@ -30,11 +32,21 @@ const Product = () => {
     dispatch(productDetailAction(id))
   }, [dispatch])
 
-  const navigate = useNavigate()
-
+  
+  // Show the toast when adding to cart
   const addToCartHandler = () => {
+    setShowToast(true)
+  }
+  
+  const navigate = useNavigate()
+  
+  const redirectToHandler = () => {
     navigate(`/cart/${id}`)
-    console.log('first')
+  }
+  
+  // Close the toast
+  const closeToastHandler = () => {
+    setShowToast(false)
   }
 
   // Check if product is undefined
@@ -98,6 +110,8 @@ const Product = () => {
           </Row>
         </div>
       )}
+
+      <Toast showToast={showToast} handleClose={closeToastHandler} redirectTo={redirectToHandler} productName={product.name} />
     </Container>
   )
 }
