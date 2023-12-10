@@ -21,6 +21,8 @@ const Cart = () => {
     }
   }, [dispatch])
 
+  const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0)
+
   return (
     <Container className="mt-5 min-vh-50">
       <div className="row row-cols-md-1 row-cols-lg-2">
@@ -68,6 +70,8 @@ const Cart = () => {
         </div>
 
         <div className="col-lg-4 d-flex justify-content-lg-end">
+          <div>
+
           <div className="card order-summary">
             <div className="card-body">
               <h5 className="card-title mb-4">Order Summary</h5>
@@ -80,16 +84,17 @@ const Cart = () => {
               </div>
               <div className="fw-medium mb-1 d-flex justify-content-between align-items-center">
                 <p>Total Price:</p>
-                <p>$60.00</p>
+                <p>${totalPrice}</p>
               </div>
               <div className="text-secondary mb-1 d-flex justify-content-between align-items-center">
                 <p>Delivery:</p>
                 <p>Free</p>
               </div>
               <Button className="w-100 mt-4" variant="dark">
-                Checkout ($60.00)
+                Checkout (${totalPrice})
               </Button>
             </div>
+          </div>
           </div>
         </div>
       </div>
