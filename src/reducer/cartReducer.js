@@ -10,9 +10,9 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
       if (existingItem) {
         return {
           ...state,
-          cartItems: state.cartItems.map((i) => {
+          cartItems: state.cartItems.map((i) => 
             i.product === existingItem.product ? item : i
-          }),
+          ),
         }
       } else {
         return {
@@ -21,7 +21,7 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
         }
       }
 
-      default:
-        return state
+    default:
+      return state
   }
 }

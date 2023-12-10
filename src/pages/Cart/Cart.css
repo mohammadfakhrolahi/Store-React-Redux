@@ -1,0 +1,15 @@
+.mh-7 {
+  max-height: 7rem;
+}
+
+.mw-42 {
+  max-width: 42rem;
+}
+
+.img {
+  object-fit: cover;
+}
+
+.order-summary:hover {
+  box-shadow: none !important; 
+}
