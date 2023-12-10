@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 
-import { cartAction } from '../../action/cartAction'
+import { cartAction, removeFromCart } from '../../action/cartAction'
 
 import './Cart.css'
 
@@ -22,6 +22,10 @@ const Cart = () => {
   }, [dispatch])
 
   const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0)
+
+  const removeFromCartHandler = (id) => {
+    dispatch(removeFromCart(id))
+  }
 
   return (
     <Container className="mt-5 min-vh-50">
@@ -58,7 +62,7 @@ const Cart = () => {
                   >
                     <div>
                       <Card.Subtitle className="">${item.price}</Card.Subtitle>
-                      <button type="button" className="btn">
+                      <button  onClick={() => removeFromCartHandler(item.product)} type="button" className="btn">
                         <i className="bi bi-trash3-fill link-danger"></i>
                       </button>
                     </div>
