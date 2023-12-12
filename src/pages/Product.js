@@ -56,7 +56,7 @@ const Product = () => {
   const navigate = useNavigate()
 
   const redirectToHandler = () => {
-    navigate(`/cart/${id}`)
+    navigate(`/cart`)
   }
 
   // Close the toast
