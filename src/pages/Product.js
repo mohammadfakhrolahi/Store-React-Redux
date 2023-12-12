@@ -43,6 +43,7 @@ const Product = () => {
   const addToCartHandler = () => {
     const existingItem = cartItems.find((item) => item.id === id)
 
+
     if (existingItem) {
       dispatch(updateCartItemAmount(id, counter)) // Update amount
     } else {
