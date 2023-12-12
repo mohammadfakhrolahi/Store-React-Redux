@@ -11,14 +11,26 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
         return {
           ...state,
           cartItems: state.cartItems.map((i) =>
-            i.product === existingItem.product ? item : i
+            i.product === existingItem.product
+              ? { ...i, amount: i.amount + item.amount }
+              : i
           ),
         }
       } else {
         return {
           ...state,
-          cartItems: [...state.cartItems, item],
+          cartItems: [...state.cartItems, { ...item, amount: item.amount }],
         }
+      }
+
+    case 'CART_UPDATE_ITEM_AMOUNT':
+      const { productId, amount } = action.payload
+
+      return {
+        ...state,
+        cartItems: state.cartItems.map((item) =>
+          item.product === productId ? { ...state, amount } : item
+        ),
       }
 
     case 'CART_REMOVE_ITEM':

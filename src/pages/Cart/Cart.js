@@ -23,6 +23,9 @@ const Cart = () => {
 
   const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0)
 
+  const amount = cartItems.reduce((acc, item) => acc + item.amount, 0)
+
+  // Remove product from cart
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id))
   }
@@ -53,7 +56,7 @@ const Cart = () => {
                     className="d-flex flex-column justify-content-center align-items-start"
                   >
                     <Card.Title className="mb-3">{item.name}</Card.Title>
-                    <Card.Text className="text-secondary">Amount: 1</Card.Text>
+                    <Card.Text className="text-secondary">Amount: {item.amount}</Card.Text>
                   </Col>
 
                   <Col
@@ -81,7 +84,7 @@ const Cart = () => {
               <h5 className="card-title mb-4">Order Summary</h5>
               <div className="fw-medium mb-1 d-flex justify-content-between align-items-center">
                 <p>Number of Items:</p>
-                <p>3</p>
+                <p>{amount}</p>
               </div>
               <div className="text-secondary">
                 <hr />
