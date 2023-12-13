@@ -1,7 +1,7 @@
 export const cartReducer = (state = { cartItems: [] }, action) => {
   switch (action.type) {
     case 'CART_ITEM_ADD':
-      const newItem = action.payload // New item
+      const newItem = action.payload
 
       const existingItem = state.cartItems.find(
         (item) => item.product === newItem.product
