@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 
-import { cartAction, removeFromCart } from '../../action/cartAction'
+import { addToCart, removeFromCart } from '../../action/cartAction'
 
 import './Cart.css'
 
@@ -17,7 +17,7 @@ const Cart = () => {
 
   useEffect(() => {
     if (id) {
-      dispatch(cartAction(id))
+      dispatch(addToCart(id))
     }
   }, [dispatch])
 

@@ -4,11 +4,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Container, Row, Col, Image, Button } from 'react-bootstrap'
 
 import { productDetailAction } from '../action/productAction'
-import { cartAction, updateCartItemAmount } from '../action/cartAction'
+import { addToCart, updateCartItemAmount } from '../action/cartAction'
 import Loading from '../components/Loading/Loading'
 import Toast from '../components/Toast/Toast'
-
-import store from '../store'
 
 const Product = () => {
   const dispatch = useDispatch()
@@ -47,7 +45,7 @@ const Product = () => {
     if (existingItem) {
       dispatch(updateCartItemAmount(id, counter)) // Update amount
     } else {
-      dispatch(cartAction(id, counter)) // Add product
+      dispatch(addToCart(id, counter)) // Add product
     }
 
     setShowToast(true)
