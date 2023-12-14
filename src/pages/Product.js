@@ -44,8 +44,10 @@ const Product = () => {
 
     if (existingItem) {
       dispatch(updateCartItemAmount(id, counter)) // Update amount
+      // console.log('update')
     } else {
       dispatch(addToCart(id, counter)) // Add product
+      // console.log('add')
     }
 
     setShowToast(true)

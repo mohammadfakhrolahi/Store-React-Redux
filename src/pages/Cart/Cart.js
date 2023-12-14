@@ -1,19 +1,37 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 
 import { addToCart, removeFromCart } from '../../action/cartAction'
+import { updateCartItemAmount } from '../../action/cartAction'
 
 import './Cart.css'
 
 const Cart = () => {
   const { id } = useParams()
 
-  const dispatch = useDispatch()
-
   const cart = useSelector((state) => state.cart)
   const { cartItems } = cart
+  const dispatch = useDispatch()
+
+  const handleIncrement = (id) => {
+    const amountArr = cartItems.filter((item) => item.product === id)
+    let amount = amountArr.map((item) => Number(item.amount))
+    amount = amount[0] + 1
+
+    dispatch(updateCartItemAmount(id, amount))
+  }
+
+  const handleDecrement = (id) => {
+    const amountArr = cartItems.filter((item) => item.product === id)
+    let amount = amountArr.map((item) => Number(item.amount))
+    if (amount > 1) {
+      amount = amount[0] - 1
+
+      dispatch(updateCartItemAmount(id, amount))
+    }
+  }
 
   useEffect(() => {
     if (id) {
@@ -56,7 +74,32 @@ const Cart = () => {
                     className="d-flex flex-column justify-content-center align-items-start"
                   >
                     <Card.Title className="mb-3">{item.name}</Card.Title>
-                    <Card.Text className="text-secondary">Amount: {item.amount}</Card.Text>
+                    <div
+                      className="btn-group btn-group-sm me-2"
+                      role="group"
+                      aria-label="Small button group"
+                    >
+                      <Button
+                        onClick={() => handleDecrement(item.product)}
+                        className="btn-primary"
+                        id={item.product}
+                      >
+                        <i className="bi bi-dash"></i>
+                      </Button>
+                      <p
+                        className="px-3 m-0 text-dark bg-primary-subtle border d-flex align-items-center"
+                        id={item.product}
+                      >
+                        {item.amount}
+                      </p>
+                      <Button
+                        onClick={() => handleIncrement(item.product)}
+                        className="btn-primary"
+                        id={item.product}
+                      >
+                        <i className="bi bi-plus-lg"></i>
+                      </Button>
+                    </div>
                   </Col>
 
                   <Col
@@ -65,7 +108,11 @@ const Cart = () => {
                   >
                     <div>
                       <Card.Subtitle className="">${item.price}</Card.Subtitle>
-                      <button  onClick={() => removeFromCartHandler(item.product)} type="button" className="btn">
+                      <button
+                        onClick={() => removeFromCartHandler(item.product)}
+                        type="button"
+                        className="btn"
+                      >
                         <i className="bi bi-trash3-fill link-danger"></i>
                       </button>
                     </div>
@@ -78,30 +125,29 @@ const Cart = () => {
 
         <div className="col-lg-4 d-flex justify-content-lg-end">
           <div>
-
-          <div className="card order-summary">
-            <div className="card-body">
-              <h5 className="card-title mb-4">Order Summary</h5>
-              <div className="fw-medium mb-1 d-flex justify-content-between align-items-center">
-                <p>Number of Items:</p>
-                <p>{amount}</p>
+            <div className="card order-summary">
+              <div className="card-body">
+                <h5 className="card-title mb-4">Order Summary</h5>
+                <div className="fw-medium mb-1 d-flex justify-content-between align-items-center">
+                  <p>Number of Items:</p>
+                  <p>{amount}</p>
+                </div>
+                <div className="text-secondary">
+                  <hr />
+                </div>
+                <div className="fw-medium mb-1 d-flex justify-content-between align-items-center">
+                  <p>Total Price:</p>
+                  <p>${totalPrice}</p>
+                </div>
+                <div className="text-secondary mb-1 d-flex justify-content-between align-items-center">
+                  <p>Delivery:</p>
+                  <p>Free</p>
+                </div>
+                <Button className="w-100 mt-4" variant="dark">
+                  Checkout (${totalPrice})
+                </Button>
               </div>
-              <div className="text-secondary">
-                <hr />
-              </div>
-              <div className="fw-medium mb-1 d-flex justify-content-between align-items-center">
-                <p>Total Price:</p>
-                <p>${totalPrice}</p>
-              </div>
-              <div className="text-secondary mb-1 d-flex justify-content-between align-items-center">
-                <p>Delivery:</p>
-                <p>Free</p>
-              </div>
-              <Button className="w-100 mt-4" variant="dark">
-                Checkout (${totalPrice})
-              </Button>
             </div>
-          </div>
           </div>
         </div>
       </div>
