@@ -10,7 +10,6 @@ const Header = () => {
   const { cartItems } = cart
 
   const amount = cartItems.reduce((acc, item) => acc + item.amount, 0)
-  // console.log(amount)
 
   return (
     <header>
