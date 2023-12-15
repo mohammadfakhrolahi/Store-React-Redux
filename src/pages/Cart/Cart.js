@@ -70,6 +70,8 @@ const Cart = () => {
                         className="rounded-2"
                         variant="top"
                         src={item.image}
+                        alt={item.name}
+                        title={item.name}
                       />
                     </Link>
                   </Col>
@@ -78,7 +80,10 @@ const Cart = () => {
                     xs={6}
                     className="d-flex flex-column justify-content-center align-items-start"
                   >
-                    <Link to={`/product/${item.product}`} className='link-underline link-underline-opacity-0 text-dark'>
+                    <Link
+                      to={`/product/${item.product}`}
+                      className="link-underline link-underline-opacity-0 text-dark"
+                    >
                       <Card.Title className="mb-3">{item.name}</Card.Title>
                     </Link>
                     <div

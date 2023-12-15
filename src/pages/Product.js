@@ -41,7 +41,6 @@ const Product = () => {
   const addToCartHandler = () => {
     const existingItem = cartItems.find((item) => item.id === id)
 
-
     if (existingItem) {
       dispatch(updateCartItemAmount(id, counter)) // Update amount
       // console.log('update')
@@ -83,6 +82,7 @@ const Product = () => {
               <Image
                 src={product.image}
                 alt={product.name}
+                title={product.name}
                 className="img-fluid"
               />
             </Col>

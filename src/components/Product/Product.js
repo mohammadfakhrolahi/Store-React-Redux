@@ -11,7 +11,7 @@ const Product = ({ product }) => {
       className="link-underline link-underline-opacity-0"
     >
       <Card className="h-100 shadow-sm">
-        <Card.Img src={product.image} />
+        <Card.Img src={product.image} alt={product.name} title={product.name} />
 
         <Card.Body>
           <Card.Title className="text-body">{product.name}</Card.Title>
