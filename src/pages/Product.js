@@ -75,7 +75,7 @@ const Product = () => {
         <Loading />
       ) : (
         <div>
-          <Link to="/" className="btn btn-outline-secondary btn-sm">
+          <Link to={-1} className="btn btn-outline-secondary btn-sm">
             <i className="bi bi-chevron-left"></i> Back
           </Link>
           <Row className="mt-3">
