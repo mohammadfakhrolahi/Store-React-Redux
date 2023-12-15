@@ -39,7 +39,7 @@ const Cart = () => {
     }
   }, [dispatch])
 
-  const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0)
+  const totalPrice = cartItems.reduce((acc, item) => acc + (item.price * item.amount), 0)
 
   const amount = cartItems.reduce((acc, item) => acc + item.amount, 0)
 
