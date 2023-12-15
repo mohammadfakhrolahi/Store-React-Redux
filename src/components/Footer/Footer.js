@@ -11,7 +11,7 @@ const Footer = () => {
               href="/"
               className="text-decoration-none text-black fs-3 fw-semibold logo"
             >
-              FC Market
+              iHub Store
             </a>
           </Col>
 

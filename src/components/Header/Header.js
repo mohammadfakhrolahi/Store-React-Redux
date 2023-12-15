@@ -16,7 +16,7 @@ const Header = () => {
       <Navbar className="bg-dark fixed-top" variant="dark">
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand className="logo">FC Market</Navbar.Brand>
+            <Navbar.Brand className="logo">iHub Store</Navbar.Brand>
           </LinkContainer>
           <Nav>
             <LinkContainer to="/cart">
