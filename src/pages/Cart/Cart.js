@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 
 import { addToCart, removeFromCart } from '../../action/cartAction'
@@ -39,7 +39,10 @@ const Cart = () => {
     }
   }, [dispatch])
 
-  const totalPrice = cartItems.reduce((acc, item) => acc + (item.price * item.amount), 0)
+  const totalPrice = cartItems.reduce(
+    (acc, item) => acc + item.price * item.amount,
+    0
+  )
 
   const amount = cartItems.reduce((acc, item) => acc + item.amount, 0)
 
@@ -62,18 +65,22 @@ const Cart = () => {
               <div key={item.product}>
                 <Row className="w-100 p-1 mb-3 bg-light mw-42 mh-7 rounded-3">
                   <Col className="" xs={3}>
-                    <Card.Img
-                      className="rounded-2"
-                      variant="top"
-                      src={item.image}
-                    />
+                    <Link to={`/product/${item.product}`}>
+                      <Card.Img
+                        className="rounded-2"
+                        variant="top"
+                        src={item.image}
+                      />
+                    </Link>
                   </Col>
 
                   <Col
                     xs={6}
                     className="d-flex flex-column justify-content-center align-items-start"
                   >
-                    <Card.Title className="mb-3">{item.name}</Card.Title>
+                    <Link to={`/product/${item.product}`} className='link-underline link-underline-opacity-0 text-dark'>
+                      <Card.Title className="mb-3">{item.name}</Card.Title>
+                    </Link>
                     <div
                       className="btn-group btn-group-sm me-2"
                       role="group"
